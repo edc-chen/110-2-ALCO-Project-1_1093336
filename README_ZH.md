@@ -3,97 +3,100 @@
 ## Test Input Dataset and Test Output 
 
 輸入一個整數數字X，X ≦ 99，輸出為帶入遞迴公式計算之結果
-#### Test Input Dataset
-+ 3
-+ 0
-+ 80
-+ 50
-+ 19
-+ 99
-
-#### Test Output
-+ 11
-+ 1
-+ 1587
-+ 409
-+ 3354
-+ 3552
----
-## 執行結果
-
+#### Test Dataset
++ Case# 1
+###### Input
 ```
 Input a number:
 3
+```
+###### Output
+```
 The damage:
 11
--- program is finished running (0) --
-
-
-Reset: reset completed.
-
+```
++ Case# 2
+###### Input
+```
 Input a number:
 0
+```
+###### Output
+```
 The damage:
 1
--- program is finished running (0) --
-
-
-Reset: reset completed.
-
+```
++ Case# 3
+###### Input
+```
 Input a number:
 80
+```
+###### Output
+```
 The damage:
 1587
--- program is finished running (0) --
-
-
-Reset: reset completed.
-
+```
++ Case# 4
+###### Input
+```
 Input a number:
 50
+```
+###### Output
+```
 The damage:
 409
--- program is finished running (0) --
-
-
-Reset: reset completed.
-
+```
++ Case# 5
+###### Input
+```
 Input a number:
 19
+```
+###### Output
+```
 The damage:
 3354
--- program is finished running (0) --
-
-
-Reset: reset completed.
-
+```
++ Case# 6
+###### Input
+```
 Input a number:
 99
+```
+###### Output
+```
 The damage:
 3552
--- program is finished running (0) --
-
 ```
+
 ---
+
 ## 程式說明
 
-輸入的整數X存在**s2(x19)**，**s11(x27)**為F的return值也等同於輸出，計算Function的標籤為**F**，
-進入**F**時，接著判斷**s2(x19)**的範圍
+重點參數使用介紹
++ **s2(x19)**  : 輸入的整數X   
++ **s3(x20)**  : 僅作為F內部的判斷用數字   
++ **s5(x22)**  : 僅作為開頭判別是否會過小讓程式壞掉    
++ **s11(x27)** : 為F的return值也等同於輸出   
 
+計算Function的標籤為**F**，進入**F**時，接著判斷**s2(x19)**的範圍
 * **s2 < 0** 跳至 **N_other**
-    * **t2** 加 **-1**
+    * **s11** 加 **-1**
 * **s2 = 0** 跳至 **N_0**
-    * **t2** 加 **1**
+    * **s11** 加 **1**
 * **s2 = 1** 跳至 **N_1**
-    * **t2** 加 **5**
+    * **s11** 加 **5**
 * **1 < s2 ≤ 10** 跳至 **N_1_10:**
-    * **s2** 減 **1** 後再次跳至 **F**，**t1** 再減 **1** 後再次跳至 **F**
+    * **s2** 減 **1** 後再次跳至 **F**，**s2** 讀回儲存過的原始數字在減 **2** 後再次跳至 **F**
 * **10 < s2 ≤ 20** 跳至 **N_10_20**
-    * **t1** 減 **2** 後再次跳至 **F**，**t1** 再減 **1** 後再次跳至 **F**
+    * **s2** 減 **2** 後再次跳至 **F**，**s2** 讀回儲存過的原始數字在減 **3**  再減 **1** 後再次跳至 **F**
 * **s2 > 20** 跳至 **N_20**
-    * **t2** 加 **t2\*2**，**t1** 除 **5** 後再次跳至 **F**   
+    *  先利用**t6**設成**5**，**s2** 除 **t6** 後再次跳至 **F** 
+    *  利用**t6**儲存**s2**的值，**s11** 加 **t6\*2** 
 
-每個case執行完後將直接跳至**Exit**，將**sp**中的**t1**及**ra**取出後跳至ra儲存的位置，
+每個Case一開始都會對**sp**做加上-8，並在結束後將**sp**中的**ra**及**s2**取出後跳至ra儲存的位置，並且對**sp**做加**8**來恢復先前被減掉的部分    
 若返回主程式，就輸出程式結果並結束程式
 
 ---
