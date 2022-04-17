@@ -3,7 +3,7 @@
 ## Test Input Dataset and Test Output 
 
 輸入一個整數數字X，X ≦ 99，輸出為帶入遞迴公式計算之結果
-#### Test Dataset
+### Test Dataset
 + Case# 1
 ###### Input
 ```
