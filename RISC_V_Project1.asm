@@ -11,9 +11,9 @@ main:
 	ecall
 	li a7, 5
 	ecall
-	add s2, zero,a0		#s2 == input num X
-	addi s5, zero,-2048	#¨¾¿é¤J¹L¤pÃa±¼
-	blt s2, s5,main
+	add s2, zero,a0		#s2 == input num X	
+	addi s5, zero,99
+	bgt s2, s5,main
 	jal ra, F
 	la a0, output0
 	li a7, 4
